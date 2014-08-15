@@ -1,6 +1,6 @@
-ROLLNAME	= skeleton
-VERSION		= 1.0
-RELEASE		= 0
-COLOR		= firebrick
+ROLLNAME        = skeleton
+VERSION        :=$(shell bash version.sh -v)
+RELEASE        :=$(shell bash version.sh -h)
+COLOR           = firebrick
 
-REDHAT.ROOT	= $(CURDIR)
+REDHAT.ROOT     = $(CURDIR)
