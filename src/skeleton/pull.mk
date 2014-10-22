@@ -29,9 +29,9 @@ $(SRC_PKGS):
 	else \
 		$(DL.CMD) $(DL.OPTS) $(DL.SERVER)/$(DL.PATH)/$@ ; \
 		echo "::: Verifying size of $@ :::" ; \
-		$(GREP.CMD) `$(STAT.CMD) --printf="%s" $@` $(VERIFY.HASHES) ; \
+		$(GREP.CMD) `$(STAT.CMD) --printf="%s" $@` $(VERIFY.HASHES) || exit 2 ; \
 		echo "::: Verifying hash of $@ :::" ; \
-		$(GREP.CMD) `$(VERIFY.CMD) $(VERIFY.OPTS) $@ ` $(VERIFY.HASHES) ; \
+		$(GREP.CMD) `$(VERIFY.CMD) $(VERIFY.OPTS) $@ ` $(VERIFY.HASHES) || exit 2 ; \
 		echo "" ; \
 	fi
 
