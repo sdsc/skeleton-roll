@@ -4,18 +4,13 @@
 
 
 	<description>
-	Your skeleton roll description here
+	The skeleton Roll - http://www.graveyard.edu/skeleton
 	</description>
 
 	<copyright>
 	Copyright (c) 2000 - 2014 The Regents of the University of California.
 	All rights reserved. Rocks(r) v6.1.1 www.rocksclusters.org
-	
 	</copyright>
-
-	<changelog>
-	$Log$
-	</changelog>
 
 	<package>skeleton</package>
 
