@@ -98,6 +98,12 @@ The following steps are now required after using ./rename_roll.sh...
     src/${NEWNAME}/pull.mk
   - Record size and git hash of src/${NEWNAME}/${NEWNAME}-1.0.tgz in 
     src/${NEWNAME}/binary_hashes per the instructions in src/${NEWNAME}/README.md
+  - Perform the desired [optional] steps listed below
+  - Initialize the new git repository
+  - Make at least one commit to the new repository
+  - Add annotated tags for the supported Rocks versions to the new repository
+    so that version.sh will provide a 'sensible' version number for the new
+    roll.
 
 While not required, you should rename this directory ${NEWNAME}-roll to avoid 
 confusion and, optionally, perform the following additional changes...
