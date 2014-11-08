@@ -99,7 +99,14 @@ The following steps are now required after using ./rename_roll.sh...
   - Record size and git hash of src/${NEWNAME}/${NEWNAME}-1.0.tgz in 
     src/${NEWNAME}/binary_hashes per the instructions in src/${NEWNAME}/README.md
 
-While not required, you should rename this directory ${NEWNAME}-roll to avoid confusion.
+While not required, you should rename this directory ${NEWNAME}-roll to avoid 
+confusion and, optionally, perform the following additional changes...
+
+  - Remove USING.md, rename_roll.sh and src/${NEWNAME}/README.md
+  - [Optionally] move gen_hash.sh to a new location (ie. ~/bin) or remove it.
+  - If you are not going to populate the default Rocks usersguide then remove 
+    the entire src/usersguide directory and remove the
+    <package>roll-${NEWNAME}-usersguide</package> entry from nodes/${NEWNAME}-base.xml
 
 EOF
 
