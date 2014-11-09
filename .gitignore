@@ -20,7 +20,10 @@ rocks-version-common.mk
 rocks-version.mk
 roll-profile.mk
 roll-*.xml
+bootstrap.py
+build.log
 src/build*
+cache/
 *.spec
 *.spec.mk
 *.iso
