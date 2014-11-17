@@ -11,10 +11,12 @@ Rules-linux.mk
 Rules-rcfiles.mk
 Rules-scripts.mk
 Rules.mk
+SOURCES/
+SPECS/
 _arch
 _distribution
 _os
-disk?/
+disk*/
 python.mk
 rocks-version-common.mk
 rocks-version.mk

@@ -7,7 +7,6 @@ This roll bundles... <REPLACE_ME>
 For more information about the various packages included in the skeleton roll please visit their official web pages:
 
 - <a href="" target="_blank"></a> is .
-- <a href="" target="_blank"></a> is .
 
 
 ## Requirements
@@ -32,8 +31,7 @@ To build the skeleton-roll, execute this on a Rocks development
 machine (e.g., a frontend or development appliance):
 
 ```shell
-% make default 2>&1 | tee build.log
-% grep "RPM build error" build.log
+% make 2>&1 | tee build.log
 ```
 
 A successful build will create the file `skeleton-*.disk1.iso`.  If you built the
@@ -41,35 +39,26 @@ roll on a Rocks frontend, proceed to the installation step. If you built the
 roll on a Rocks development appliance, you need to copy the roll to your Rocks
 frontend before continuing with installation.
 
+<IF APPROPRIATE>
 This roll source supports building with different compilers and for different
-network fabrics and mpi flavors.  By default, it builds using the gnu compilers
-for openmpi ethernet.  To build for a different configuration, use the
-`ROLLCOMPILER`, `ROLLMPI` and `ROLLNETWORK` make variables, e.g.,
+MPI flavors.  The `ROLLCOMPILER` and `ROLLMPI` make variables can be used to
+specify the names of compiler and MPI modulefiles to use for building the
+software, e.g.,
 
 ```shell
-make ROLLCOMPILER=intel ROLLMPI=mpich2 ROLLNETWORK=mx 
+make ROLLCOMPILER=intel ROLLMPI=mvapich2_ib 2>&1 | tee build.log
 ```
 
-This roll source supports building with different compilers. The 
-`ROLLCOMPILER` make variable can be used to specify the names of compiler 
-modulefiles to use for building the software, e.g.,
+The build process recognizes "gnu", "intel" or "pgi" as the value for the
+`ROLLCOMPILER` variable; any MPI modulefile name may be used as the value of
+the `ROLLMPI` variable.  The default values are "gnu" and "rocks-openmpi".
+<ENDIF>
 
-
- ```shell
- % make ROLLCOMPILER=gnu/4.9.1
- ```
-
-If the `ROLLCOMPILER` and/or `ROLLMPI` variables are specified, their values 
-are incorporated into the names of the produced roll and rpms, e.g.,
-
-```shell
-make ROLLCOMPILER=intel ROLLMPI=mvapich2_ib
-```
-produces a roll with a name that begins "`skeleton_intel_mvapich2_ib`"; it
-contains and installs similarly-named rpms.
-
-The roll also supports a `ROLLOPTS` make variable values of 'avx' or 'avx2', 
-indicating that the target architecture supports AVX or AVX2 instructions.
+<IF APPROPRIATE>
+For gnu compilers, the roll supports a `ROLLOPTS` make variable value of
+'avx' or 'avx2', indicating that the target architecture supports AVX/AVX2
+instructions.
+<ENDIF>
 
 
 ## Installation
@@ -77,7 +66,7 @@ indicating that the target architecture supports AVX or AVX2 instructions.
 To install, execute these instructions on a Rocks frontend:
 
 ```shell
-% rocks add roll skeleton*.iso
+% rocks add roll *.iso
 % rocks enable roll skeleton
 % cd /export/rocks/install
 % rocks create distro
@@ -88,23 +77,17 @@ In addition to the software itself, the roll installs skeleton environment
 module files in:
 
 ```shell
-/opt/modulefiles/applications/.(compiler)/skeleton
+/opt/modulefiles/applications/skeleton
 ```
 
 
 ## Testing
 
 The skeleton-roll includes a test script which can be run to verify proper
-installation of the skeleton-roll documentation, binaries and module files. To
+installation of the roll documentation, binaries and module files. To
 run the test scripts execute the following command(s):
 
 ```shell
 % /root/rolltests/skeleton.t 
-ok 1 - skeleton is installed
-ok 2 - skeleton test run
-ok 3 - skeleton module installed
-ok 4 - skeleton version module installed
-ok 5 - skeleton version module link created
-1..5
 ```
 
