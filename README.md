@@ -34,8 +34,8 @@ machine (e.g., a frontend or development appliance):
 % make 2>&1 | tee build.log
 ```
 
-A successful build will create the file `skeleton-*.disk1.iso`.  If you built the
-roll on a Rocks frontend, proceed to the installation step. If you built the
+A successful build will create the file `skeleton-*.disk1.iso`.  If you built
+the roll on a Rocks frontend, proceed to the installation step. If you built the
 roll on a Rocks development appliance, you need to copy the roll to your Rocks
 frontend before continuing with installation.
 
@@ -52,6 +52,16 @@ make ROLLCOMPILER=intel ROLLMPI=mvapich2_ib 2>&1 | tee build.log
 The build process recognizes "gnu", "intel" or "pgi" as the value for the
 `ROLLCOMPILER` variable; any MPI modulefile name may be used as the value of
 the `ROLLMPI` variable.  The default values are "gnu" and "rocks-openmpi".
+<ENDIF>
+
+<IF APPROPRIATE>
+The roll supports specifying building with/for python versions other than
+the one included with the o/s.  To use this feature, specify a `ROLLPY` make
+variable that includes a space-delimited list of python modulefiles, e.g.,
+
+```shell
+% make ROLLPY=opt-python 2>&1 | tee build.log
+```
 <ENDIF>
 
 <IF APPROPRIATE>
