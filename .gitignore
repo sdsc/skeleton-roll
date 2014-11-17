@@ -1,7 +1,9 @@
 .rpmmacros
 BUILD/
-RPMS/
+SOURCES/
+SPECS/
 SRPMS/
+RPMS/
 Rolls.mk
 Rules-install.mk
 Rules-linux-centos.mk
@@ -20,11 +22,15 @@ rocks-version-common.mk
 rocks-version.mk
 roll-profile.mk
 roll-*.xml
+bootstrap.py
+build.log
+src/build*
+cache/
 *.spec
 *.spec.mk
 *.iso
 *.tar.gz
 *.tar.bz2
 *.tgz
-*.zip
 *.rpm
+*.zip
