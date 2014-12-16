@@ -1,0 +1,7 @@
+#%Module1.0
+module-whatis "skeleton"
+module-whatis "Version: VERSION"
+module-whatis "Description: skeleton"
+module-whatis "Compiler: ROLLCOMPILER"
+setenv SKELETONHOME /opt/skeleton
+prepend-path PATH /opt/skeleton

@@ -13,6 +13,7 @@
 	</copyright>
 
 	<package>skeleton</package>
+	<package>skeleton-modules</package>
 	<package>skeleton-roll-test</package>
 
 
