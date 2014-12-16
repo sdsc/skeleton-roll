@@ -1,3 +1,8 @@
+ifndef ROLLCOMPILER
+  ROLLCOMPILER = gnu
+endif
+COMPILERNAME := $(firstword $(subst /, ,$(ROLLCOMPILER)))
+
 NAME           = sdsc-skeleton
 VERSION        = 1.0
 RELEASE        = 1

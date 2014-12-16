@@ -57,10 +57,15 @@
 # $Log$
 #
 
+ifndef ROLLCOMPILER
+  ROLLCOMPILER = gnu
+endif
+
 -include $(ROLLSROOT)/etc/Rolls.mk
 include Rolls.mk
 
-default: roll
+default:
+	$(MAKE) ROLLCOMPILER="$(ROLLCOMPILER)" roll
 
 distclean:: clean
 	-rm -f _arch build.log

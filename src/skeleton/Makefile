@@ -53,9 +53,6 @@
 # IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 # 
 # @Copyright@
-#
-# $Log$
-#
 
 REDHAT.ROOT = $(CURDIR)/../../
 
@@ -64,25 +61,24 @@ include Rules.mk
 include $(SDSCDEVEL)/Pull.mk
 include $(SDSCDEVEL)/Rules.mk
 
-LICENSE_FILES = $(SOURCE_DIR)/LICENSE
-
 $(NAME).spec: DESCRIPTION LICENSE
 
 DESCRIPTION:
+	$(MODULE_LOAD_CC); \
 	( \
-	  $(DESCRIBE_PKG) \
+	  $(DESCRIBE_PKG); \
+	  $(DESCRIBE_CC) \
 	) > $@
 
 LICENSE: $(SRC_DIRS)
-	if ! grep -q "GNU GENERAL PUBLIC LICENSE" $(LICENSE_FILES); then \
-	  exit 2; \
-	fi
+	$(CHECK_LICENSE_FILES)
 	echo GPL > $@
 
 build: $(SRC_DIRS)
 	( \
+	  $(MODULE_LOAD_CC); \
 	  cd $(SOURCE_DIR); \
-	  ./configure --prefix=$(PKGROOT); \
+	  ./configure CC=$(CC) --prefix=$(ROOT)/$(PKGROOT); \
 	  $(MAKE); \
 	)
 	@echo "::: Package $(NAME) build complete :::"
@@ -91,8 +87,9 @@ install::
 	mkdir -p $(ROOT)/$(PKGROOT)/$(NAME)
 	( \
 	  cd $(SOURCE_DIR); \
-	  $(MAKE) prefix=$(ROOT)/$(PKGROOT) install; \
+	  $(MAKE) install; \
 	)
+	$(INSTALL_LICENSE_FILES)
 	@echo "::: Package $(NAME) install complete :::"
 
 clean::
