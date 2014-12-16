@@ -22,7 +22,21 @@ Rocks development machine.
 
 ## Dependencies
 
-Unknown at this time.
+The sdsc-roll must be installed on the build machine, since the build process
+depends on make include files provided by that roll.
+
+<IF APPROPRIATE>
+The roll sources assume that modulefiles provided by SDSC compiler and mpi
+rolls are available, but it will build without them as long as the environment
+variables they provide are otherwise defined.
+<ENDIF>
+
+<IF APPROPRIATE>
+The build process requires the XYZ libraries and assumes that the xyz
+modulefile provided by the SDSC xyz-roll is available.  It will build without
+the modulefile as long as the environment variables it provides are otherwise
+defined.
+<ENDIF>
 
 
 ## Building
