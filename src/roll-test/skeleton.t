@@ -22,9 +22,8 @@ if($appliance =~ /$installedOnAppliancesPattern/) {
 SKIP: {
 
   skip 'skeleton not installed', 4 if ! $isInstalled;
-  SKIP: {
-    skip 'no skeleton run test written', 1;
-  }
+  $output = `module load skeleton; echo 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 | skeleton 2>&1`;
+  like($output, qr/That is correct/, 'skeleton runs');
   `/bin/ls /opt/modulefiles/applications/skeleton/[0-9]* 2>&1`;
   ok($? == 0, 'skeleton module installed');
   `/bin/ls /opt/modulefiles/applications/skeleton/.version.[0-9]* 2>&1`;
