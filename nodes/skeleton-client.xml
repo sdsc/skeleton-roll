@@ -12,6 +12,9 @@
 	All rights reserved. Rocks(r) v7.0 www.rocksclusters.org
 	</copyright>
 
-	<!-- NO packages currently installed everywhere -->
+	<package>skeleton</package>
+	<package>skeleton-modules</package>
+	<package>skeleton-roll-test</package>
+
 
 </kickstart>

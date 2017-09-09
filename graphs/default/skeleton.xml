@@ -7,19 +7,36 @@
 	</description>
 
 	<copyright>
-	Copyright (c) 2000 - 2014 The Regents of the University of California.
-	All rights reserved. Rocks(r) v6.1.1 www.rocksclusters.org
+	Copyright (c) 2000 - 2017 The Regents of the University of California.
+	All rights reserved. Rocks(r) v7.0 www.rocksclusters.org
 	</copyright>
 
 	<!-- add edges here -->
+	<!-- skeleton-base goes to ALL nodes -->
 	<edge from="base">
 		<to>skeleton-base</to>
+	</edge>
+	<!-- skeleton-client goes to ONLY login and compute nodes 
+	     NOT to ALL clients -->
+	<edge from="login">
+		<to>skeleton-client</to>
+	</edge>
+	<edge from="compute">
+		<to>skeleton-client</to>
 	</edge>
 
 	<!-- enforce post section ordering -->
 	<!-- skeleton-base post sections execute after base post sections -->
 	<order head="base">
 		<tail>skeleton-base</tail>
+	</order>
+	<!-- skeleton-client post sections execute after login post sections -->
+	<order head="login">
+		<tail>skeleton-client</tail>
+	</order>
+	<!-- skeleton-client post sections execute after compute post sections -->
+	<order head="compute">
+		<tail>skeleton-client</tail>
 	</order>
 
 </graph>
