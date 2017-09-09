@@ -5,7 +5,7 @@ COMPILERNAME := $(firstword $(subst /, ,$(ROLLCOMPILER)))
 
 NAME           = sdsc-skeleton
 VERSION        = 1.0
-RELEASE        = 1
+RELEASE        = 2
 PKGROOT        = /opt/skeleton
 
 SRC_SUBDIR     = skeleton
@@ -19,3 +19,4 @@ SOURCE_DIR     = $(SOURCE_PKG:%.$(SOURCE_SUFFIX)=%)
 TGZ_PKGS       = $(SOURCE_PKG)
 
 RPM.EXTRAS     = AutoReq:No
+RPM.PREFIX     = $(PKGROOT)
