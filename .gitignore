@@ -11,8 +11,6 @@ Rules-linux.mk
 Rules-rcfiles.mk
 Rules-scripts.mk
 Rules.mk
-SOURCES/
-SPECS/
 _arch
 _distribution
 _os
